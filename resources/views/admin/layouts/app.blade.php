@@ -58,8 +58,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('dashboard/profile') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('admin/dashboard/profile') }}">Profile</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"

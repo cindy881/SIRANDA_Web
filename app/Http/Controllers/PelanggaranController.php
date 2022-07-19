@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelanggaranController extends Controller
 {
@@ -14,7 +15,10 @@ class PelanggaranController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggaran = Pelanggaran::where('fk_user_pelanggaran', Auth::user()->id)->first();
+        return view('dashboard.pelanggaran.index')->with([
+            'pelanggaran' => $pelanggaran,
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class PelanggaranController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pelanggaran.create');
     }
 
     /**
