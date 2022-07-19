@@ -2,82 +2,83 @@
 
 @section('content')
 
-<div class="container-lg">
-    <div class="row">
-    {{-- Kotak --}}
-    <div class="col-sm-6 col-lg-3">
-        <div class="card mb-4 text-white bg-primary">
-          <div class="card-body pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div class="fs-4 fw-semibold">26K <span class="fs-6 fw-normal">(-12.4%
-                  <svg class="icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-arrow-bottom"></use>
-                  </svg>)</span></div>
-              <div>Users</div>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg class="icon">
-                  <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-options"></use>
-                </svg>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
-            </div>
-          </div>
-          <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-            <canvas class="chart" id="card-chart1" height="70"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{-- Tabel --}}
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card mb-4">
-          <div class="card-header">Data Pelanggaran</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table border mb-0">
-                <thead class="table-light fw-semibold">
-                  <tr class="align-middle">
-                    <th class="text-center">
-                      No.
-                    </th>
-                    <th>User</th>
-                    <th class="text-center">Country</th>
-                    <th>Usage</th>
-                    <th class="text-center">Payment Method</th>
-                    <th>Activity</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <td class="text-center">
-                      <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/1.jpg" alt="user@email.com"><span class="avatar-status bg-success"></span></div>
-                    </td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-options"></use>
-                          </svg>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Info</a><a class="dropdown-item" href="#">Edit</a><a class="dropdown-item text-danger" href="#">Delete</a></div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-     </div>
-    </div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Selamat Datang, {{ Auth::user()->name }}</h1>
 </div>
+  
 
-
-
+<!-- ============================================================== -->
+<!-- Table -->
+<!-- ============================================================== -->
+{{-- <div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Top Selling Products</h4>
+                        <h5 class="card-subtitle">Overview of Top Selling Items</h5>
+                    </div>
+                    <div class="ms-auto">
+                        <div class="dl">
+                            <select class="form-select shadow-none">
+                                <option value="0" selected>Monthly</option>
+                                <option value="1">Daily</option>
+                                <option value="2">Weekly</option>
+                                <option value="3">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                        <tr class="bg-light">
+                            <th class="border-top-0">Products</th>
+                            <th class="border-top-0">License</th>
+                            <th class="border-top-0">Support Agent</th>
+                            <th class="border-top-0">Technology</th>
+                            <th class="border-top-0">Tickets</th>
+                            <th class="border-top-0">Sales</th>
+                            <th class="border-top-0">Earnings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-10"><a
+                                            class="btn btn-circle d-flex btn-info text-white">EA</a>
+                                    </div>
+                                    <div class="">
+                                        <h4 class="m-b-0 font-16">Elite Admin</h4>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Single Use</td>
+                            <td>John Doe</td>
+                            <td>
+                                <label class="label label-danger">Angular</label>
+                            </td>
+                            <td>46</td>
+                            <td>356</td>
+                            <td>
+                                <h5 class="m-b-0">$2850.06</h5>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- Table -->
+<!-- ============================================================== -->
 
 
 @endsection

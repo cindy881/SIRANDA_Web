@@ -1,27 +1,31 @@
-<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-    <div class="sidebar-brand d-none d-md-flex">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-    </div>
-    <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+    {{-- <div class="container bg-secondary px-0">
+      <a class=" nav-link {{ Request::is('home') ? 'active' : '' }} text-light" aria-current="page" href="{{ url('/') }}">
+        <span class="text-light" data-feather="arrow-left"></span>
+        Back to home
+      </a>
+    </div> --}}
+    <div class="position-sticky pt-4 mx-2">
+      <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+          <a class="nav-link text-light {{ Request::is('dashboard') ? 'active' : '' }}" style="font-size: 1rem;" aria-current="page" href="{{ url('/dashboard') }}">
+            <span data-feather="sidebar"></span>
             Dashboard
-            </a>
+          </a>
         </li>
-        <li class="nav-title">Data</li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/dashboard/pelanggaran') }}">
-            Data Pelanggaran
-            </a>
+          <a class="nav-link text-light {{ Request::is('dashboard/pelanggaran*') ? 'active' : '' }}" style="font-size: 1rem;" href="{{ url('/dashboard/pelanggaran') }}">
+            <span data-feather="file-text"></span>
+            Data Pelanggaran 
+          </a>
         </li>
-        <li class="nav-title">User</li>
+        <li><hr style="background-color: aliceblue;"></li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/dashboard/profile') }}">
-            Profile
-            </a>
+          <a class="nav-link text-light {{ Request::is('dashboard/profile*') ? 'active' : '' }}" style="font-size: 1rem;" href="{{ url('/dashboard/profile') }}">
+            <span data-feather="user"></span>
+            Profile 
+          </a>
         </li>
-    </ul>
-    <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
-  </div>
+      </ul>
+    </div>
+</nav>
