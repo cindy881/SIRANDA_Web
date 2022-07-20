@@ -10,21 +10,19 @@ class Pelanggaran extends Model
     use HasFactory;
 
     protected $table = "pelanggarans";
-    protected $fillable = [
-        'id_pelanggaran',
-        'tgl_pelanggaran',
-        'uraian_pelanggaran',
-        'filefoto_pelanggaran',
-        'fk_desakel',
-        'pelaku_pelanggaran',
-        'lat_pelanggaran',
-        'lng_pelanggaran',
-        'bentuk_pelanggaran',
+    protected $guarded = [
+        'id',
     ];
 
     public function tindaklanjuts()
     {
         return $this->hasMany('App\Models\TindakLanjut');
+    }
+
+    public function desakel()
+    {
+        // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
+        return $this->belongsTo('App\Models\Desakel', 'fk_desakel', 'id');
     }
 
     public function user()

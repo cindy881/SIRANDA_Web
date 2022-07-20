@@ -5,7 +5,7 @@
         Back to home
       </a>
     </div> --}}
-    <div class="position-sticky pt-4 mx-2">
+    <div class="position-sticky pt-4 ms-2">
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link text-light {{ Request::is('admin/dashboard') ? 'active' : '' }}" style="font-size: 1rem;" aria-current="page" href="{{ route('admin.dashboard') }}">

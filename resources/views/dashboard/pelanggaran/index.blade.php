@@ -28,8 +28,8 @@
 @endif
 
 <div class="table-responsive">
-    <a href="{{ url('/dashboard/pelanggaran/create') }}" class="btn btn-primary text-light mb-3 mx-2"><i class="bi bi-plus-lg"></i> Input Pelanggaran</a>
-    <table id="example" class="table table-sm v-middle">
+    <a href="{{ url('dashboard/pelanggaran/create') }}" class="btn btn-primary text-light mb-3 mx-2"><i class="bi bi-plus-lg"></i> Input Pelanggaran</a>
+    <table class="table table-sm v-middle" id="example">
         <thead>
             <tr class="bg-light">
                 <th class="text-center">ID</th>
@@ -50,22 +50,25 @@
                 <td>{{ $pelanggaran->id_pelanggaran }}</td>
                 <td>{{ $pelanggaran->tgl_pelanggaran }}</td>
                 <td>{{ $pelanggaran->uraian_pelanggaran }}</td>
-                <td>{{ $pelanggaran->filefoto_pelanggaran }}</td>
+                <td>
+                    <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="">
+                    {{-- {{ $pelanggaran->filefoto_pelanggaran }} --}}
+                </td>
                 <td>{{ $pelanggaran->desakel->nama_desakel }}</td>
                 <td>{{ $pelanggaran->pelaku_pelanggaran }}</td>
                 <td>{{ $pelanggaran->bentuk_pelanggaran }}</td>
                 <td>
                     {{-- <button class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}">Show</button> --}}
-                    <a class="btn btn-success btn-sm" href=""><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
+                    <a class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}"><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
                 </td>
                 <td class="text-center">
-                    <a href="" class="btn btn-info btn-sm text-white d-inline"><i class="bi bi-pencil-square" style="font-size: .75rem;"></i></a>
+                    <a href="{{ url('/dashboard/pelanggaran/edit/'.$pelanggaran->id) }}" class="btn btn-info btn-sm text-white d-inline"><i class="bi bi-pencil-square" style="font-size: .75rem;"></i></a>
                 </td>
                 <td>
-                    <form action="" method="POST">
+                    <form action="{{ url('/dashboard/pelanggaran'.$pelanggaran->id) }}" method="POST" class="d-inline">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        <a class="btn btn-danger btn-sm d-inline" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></a>
+                        <a class="btn btn-danger btn-sm" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></a>
                     </form>
 
                 </td>

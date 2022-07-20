@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\TindakLanjutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +28,8 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/dashboard/pelanggaran', App\Http\Controllers\PelanggaranController::class);
-    Route::resource('/dashboard/pelanggaran/{pelanggaran:id}/tindaklanjut', App\Http\Controllers\TindakLanjutController::class);
+    Route::resource('/dashboard/pelanggaran', PelanggaranController::class);
+    Route::resource('/dashboard/pelanggaran/{pelanggaran:id}/tindaklanjut', TindakLanjutController::class);
 });
 
 // ADMIN

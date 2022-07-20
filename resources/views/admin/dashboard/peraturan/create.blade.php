@@ -21,7 +21,7 @@
                     @enderror
                 </div>
             </div>
-            {{-- FILE --}}
+            {{-- FILE UU --}}
             <div class="row  mb-2">
                 <label for="inputFile" class="col-sm-2 col-form-label">Dokumen</label>
                 <div class="col-sm-10">

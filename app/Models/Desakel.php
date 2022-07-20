@@ -17,4 +17,9 @@ class Desakel extends Model
         // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
         return $this->belongsTo('App\Models\Kecamatan', 'fk_kec', 'id');
     }
+
+    public function pelanggarans()
+    {
+        return $this->hasMany('App\Models\Pelanggaran');
+    }
 }

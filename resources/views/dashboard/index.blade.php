@@ -49,18 +49,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($pelanggarans as $pelanggaran)
+
                         <tr class="text-center">
-                            <td>id_pelanggaran</td>
-                            <td>tgl_pelanggaran</td>
-                            <td>uraian_pelanggaran</td>
-                            <td>filefoto_pelanggaran</td>
-                            <td>nama_desakel</td>
-                            <td>pelaku_pelanggaran</td>
-                            <td>bentuk_pelanggaran</td>
+                            <td>{{ $pelanggaran->id_pelanggaran }}</td>
+                            <td>{{ $pelanggaran->tgl_pelanggaran }}</td>
+                            <td>{{ $pelanggaran->uraian_pelanggaran }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="">
+                                {{-- {{ $pelanggaran->filefoto_pelanggaran }} --}}
+                            </td>
+                            <td>{{ $pelanggaran->desakel->nama_desakel }}</td>
+                            <td>{{ $pelanggaran->pelaku_pelanggaran }}</td>
+                            <td>{{ $pelanggaran->bentuk_pelanggaran }}</td>
                             <td>
                                 <a class="btn btn-success btn-sm"><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
                             </td>
                         </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
