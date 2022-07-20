@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/dashboard/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+    Route::resource('/dashboard/pelanggaran/{pelanggaran:id}/tindaklanjut', App\Http\Controllers\TindakLanjutController::class);
 });
 
 // ADMIN

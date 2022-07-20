@@ -14,7 +14,10 @@ class TindakLanjutController extends Controller
      */
     public function index()
     {
-        //
+        $tindaklanjut = TindakLanjut::where('fk_user_tindaklanjut', auth()->user()->id)->get();
+        return view('dashboard.tindaklanjut.index')->with([
+            'tindaklanjuts' => $tindaklanjut,
+        ]);
     }
 
     /**

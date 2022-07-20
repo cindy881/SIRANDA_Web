@@ -6,8 +6,9 @@
     <div class="card-header">
         <h3>Tambah Data</h3>
     </div>
+    
     <div class="card-body">
-        <form action="{{ url('dashboard/pelanggaran/create') }}" method="POST">
+        <form action="{{ url('/dashboard/pelanggaran') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             {{-- TANGGAL --}}
@@ -24,7 +25,7 @@
             <div class="row  mb-2">
                 <label for="inputUraian" class="col-sm-2 col-form-label">Uraian</label>
                 <div class="col-sm-10">
-                    <textarea id="exampleFormControlTextarea1" rows="2" class="form-control @error('uraian_pelanggaran') is-invalid @enderror" name="uraian_pelanggaran" value="{{ old('uraian_pelanggaran') }}"></textarea>
+                    <input type="text" class="form-control @error('uraian_pelanggaran') is-invalid @enderror" name="uraian_pelanggaran" value="{{ old('uraian_pelanggaran') }}">
                     @error('uraian_pelanggaran')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -40,15 +41,27 @@
                     @enderror
                 </div>
             </div>
+            {{-- LOKASI --}}
+            <div class="row  mb-2">
+                <label for="inputLokasi" class="col-sm-2 col-form-label">Lokasi</label>
+                <div class="col-sm-10">
+                    <select class="form-select" name="fk_desakel" aria-label="Default select example">
+                        <option selected>Pilih Lokasi Pelanggaran</option>
+                        @foreach($desakels as $desakel)
+                        <option value="{{ $desakel->id }}">{{ $desakel->nama_desakel }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>           
             {{-- PELAKU --}}
             <div class="row  mb-2">
                 <label for="inputPelaku" class="col-sm-2 col-form-label">Pelaku</label>
                 <div class="col-sm-10">
                     <select class="form-select" name="pelaku_pelanggaran" aria-label="Default select example">
                         <option selected>Pilih Pelaku Pelanggaran</option>
-                        <option value="1">Perorangan</option>
-                        <option value="2">Pelaku Usaha</option>
-                        <option value="3">Badan Usaha</option>
+                        <option value="Perorangan">Perorangan</option>
+                        <option value="Pelaku Usaha">Pelaku Usaha</option>
+                        <option value="Badan Usaha">Badan Usaha</option>
                     </select>
                 </div>
             </div>           

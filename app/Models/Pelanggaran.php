@@ -10,7 +10,17 @@ class Pelanggaran extends Model
     use HasFactory;
 
     protected $table = "pelanggarans";
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'id_pelanggaran',
+        'tgl_pelanggaran',
+        'uraian_pelanggaran',
+        'filefoto_pelanggaran',
+        'fk_desakel',
+        'pelaku_pelanggaran',
+        'lat_pelanggaran',
+        'lng_pelanggaran',
+        'bentuk_pelanggaran',
+    ];
 
     public function tindaklanjuts()
     {

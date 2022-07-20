@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Desakel;
 use App\Models\Pelanggaran;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,9 +17,9 @@ class PelanggaranController extends Controller
      */
     public function index()
     {
-        $pelanggaran = Pelanggaran::where('fk_user_pelanggaran', Auth::user()->id)->first();
+        $pelanggaran = Pelanggaran::where('fk_user_pelanggaran', Auth::user()->id)->get();
         return view('dashboard.pelanggaran.index')->with([
-            'pelanggaran' => $pelanggaran,
+            'pelanggarans' => $pelanggaran,
         ]);
     }
 
@@ -28,7 +30,10 @@ class PelanggaranController extends Controller
      */
     public function create()
     {
-        return view('dashboard.pelanggaran.create');
+        $desakel = Desakel::all();
+        return view('dashboard.pelanggaran.create')->with([
+            'desakels' => $desakel,
+        ]);
     }
 
     /**
@@ -41,6 +46,27 @@ class PelanggaranController extends Controller
     {
         //$id = IdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>'INV-']);
         //output: INV-000001
+        // dd($request);
+        $rules = [
+            'id_pelanggaran' => 'required',
+            'tgl_pelanggaran' => 'required',
+            'uraian_pelanggaran' => 'required',
+            'filefoto_pelanggaran' => 'required|image|max:2048',
+            'pelaku_pelanggaran' => 'required',
+            'bentuk_pelanggaran' => 'required',
+        ];
+        $validatedData = $request->validate($rules);
+        $validatedData['id_pelanggaran'] = IdGenerator::generate([
+            'table' => 'pelanggarans',
+            'field' => 'id_pelanggaran',
+            'length' => 10,
+            'prefix' => 'PLGRN-',
+        ]);
+        $validatedData['filefoto_pelanggaran'] = $request->file('filefoto_pelanggaran')->store('filefoto_pelanggaran');
+        // $validatedData['fk_user_pelanggaran'] = auth()->user()->id;
+
+        Pelanggaran::create($validatedData);
+        return redirect('/dashboard/pelanggaran')->with('successCreate', 'Data baru berhasil disimpan!');
     }
 
     /**
@@ -62,7 +88,9 @@ class PelanggaranController extends Controller
      */
     public function edit(Pelanggaran $pelanggaran)
     {
-        //
+        return view('dashboard.pelanggaran.edit')->with([
+            'pelanggaran' => $pelanggaran,
+        ]);
     }
 
     /**

@@ -6,6 +6,27 @@
     <h1 class="h2">DATA TINDAK LANJUT</h1>
 </div>
 
+@if(session()->has('successCreate'))
+<div class="alert alert-success alert-dismissible fade show col-lg-10" role="alert">
+    {{ session('successCreate') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+@if(session()->has('successEdit'))
+<div class="alert alert-info alert-dismissible fade show col-lg-10" role="alert">
+    {{ session('successEdit') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+@if(session()->has('successDelete'))
+<div class="alert alert-danger alert-dismissible fade show col-lg-10" role="alert">
+    {{ session('successDelete') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="table-responsive">
     <a href="{{ url('/dashboard/tindaklanjut/create') }}" class="btn btn-primary text-light mb-3 mx-2"><i class="bi bi-plus-lg"></i> Input Tindak Lanjut</a>
     <table id="example" class="table table-sm v-middle">
@@ -18,10 +39,12 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($tindaklanjuts as $tindaklanjut)
+
             <tr class="text-center">
-                <td>id_pelanggaran</td>
-                <td>uraian_pelanggaran</td>
-                <td>filefoto_pelanggaran</td>
+                <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td>
+                <td>{{ $tindaklanjut->uraian_tindaklanjut }}</td>
+                <td>{{ $tindaklanjut->filefoto_tindaklanjut }}</td>
                 <td>
                     {{-- <button class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}">Show</button> --}}
                     <a class="btn btn-success btn-sm" href=""><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
@@ -35,6 +58,8 @@
 
                 </td>
             </tr>
+
+            @endforeach
         </tbody>
     </table>
 </div>
