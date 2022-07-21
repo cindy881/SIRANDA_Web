@@ -104,7 +104,28 @@ class PelanggaranController extends Controller
      */
     public function update(Request $request, Pelanggaran $pelanggaran)
     {
-        //
+        $rules = [
+            'tgl_pelanggaran' => 'required|date_format:Y-m-d',
+            'uraian_pelanggaran' => 'required',
+            'filefoto_pelanggaran' => 'required|image|max:2048',
+            'pelaku_pelanggaran' => 'required',
+            'bentuk_pelanggaran' => 'required',
+            'fk_desakel' => 'required',
+            'lat_pelanggaran' => 'required',
+            'lng_pelanggaran' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+        $validatedData['id_pelanggaran'] = IdGenerator::generate([
+            'table' => 'pelanggarans',
+            'field' => 'id_pelanggaran',
+            'length' => 10,
+            'prefix' => 'PLGRN-',
+        ]);
+        $validatedData['filefoto_pelanggaran'] = $request->file('filefoto_pelanggaran')->store('filefoto_pelanggaran');
+        $validatedData['fk_user_pelanggaran'] = Auth::user()->id;
+
+        Pelanggaran::where('id', $pelanggaran->id)->update($validatedData);
     }
 
     /**

@@ -4,7 +4,7 @@
 
 <div class="card card-outline mt-4 col-md-10 offset-md-1">
     <div class="card-header">
-        <h3>Tambah Data</h3>
+        <h3>Edit Data</h3>
     </div>
 
     <div class="card-body">
@@ -14,7 +14,7 @@
             {{-- TANGGAL --}}
             <div class="mx-4 mb-2">
                 <label for="tgl" class="form-label">Tanggal Pelanggaran</label>
-                <input type="date" class="form-control @error('tgl_pelanggaran') is-invalid @enderror" id="tgl_pelanggaran" name="tgl_pelanggaran" value="{{ old('tgl_pelanggaran', $pelanggaran->tgl_pelanggaran) }}" required>
+                <input type="date" class="form-control @error('tgl_pelanggaran') is-invalid @enderror" id="tgl_pelanggaran" name="tgl_pelanggaran" value="{{ old('tgl_pelanggaran', $pelanggaran->tgl_pelanggaran) }}" data-date-format="YYYY/MM/DD" placeholder="yyyy/mm/dd" required>
             </div>
             {{-- URAIAN --}}
             <div class="mx-4 mb-2">
