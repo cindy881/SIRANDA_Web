@@ -44,15 +44,13 @@ class PelanggaranController extends Controller
      */
     public function store(Request $request)
     {
-        //$id = IdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>'INV-']);
-        //output: INV-000001
-        // dd($request);
         $rules = [
             'tgl_pelanggaran' => 'required',
             'uraian_pelanggaran' => 'required',
             'filefoto_pelanggaran' => 'required|image|max:2048',
             'pelaku_pelanggaran' => 'required',
             'bentuk_pelanggaran' => 'required',
+            'fk_desakel' => 'required',
             'lat_pelanggaran' => 'required',
             'lng_pelanggaran' => 'required',
         ];
@@ -90,8 +88,10 @@ class PelanggaranController extends Controller
      */
     public function edit(Pelanggaran $pelanggaran)
     {
+        $desakel = Desakel::all();
         return view('dashboard.pelanggaran.edit')->with([
             'pelanggaran' => $pelanggaran,
+            'desakels' => $desakel,
         ]);
     }
 

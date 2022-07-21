@@ -7,21 +7,21 @@
 </div>
 
 @if(session()->has('successCreate'))
-<div class="alert alert-success alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-success alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successCreate') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successEdit'))
-<div class="alert alert-info alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-info alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successEdit') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successDelete'))
-<div class="alert alert-danger alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-danger alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successDelete') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -51,7 +51,7 @@
                 <td>{{ $pelanggaran->tgl_pelanggaran }}</td>
                 <td>{{ $pelanggaran->uraian_pelanggaran }}</td>
                 <td>
-                    <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="">
+                    <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="" style="heigth: 4rem;">
                     {{-- {{ $pelanggaran->filefoto_pelanggaran }} --}}
                 </td>
                 <td>{{ $pelanggaran->desakel->nama_desakel }}</td>
@@ -62,13 +62,13 @@
                     <a class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}"><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
                 </td>
                 <td class="text-center">
-                    <a href="{{ url('/dashboard/pelanggaran/edit/'.$pelanggaran->id) }}" class="btn btn-info btn-sm text-white d-inline"><i class="bi bi-pencil-square" style="font-size: .75rem;"></i></a>
+                    <a href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/edit') }}" class="btn btn-info btn-sm text-white d-inline"><i class="bi bi-pencil-square" style="font-size: .75rem;"></i></a>
                 </td>
                 <td>
-                    <form action="{{ url('/dashboard/pelanggaran'.$pelanggaran->id) }}" method="POST" class="d-inline">
+                    <form action="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id) }}" method="POST" class="d-inline">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        <a class="btn btn-danger btn-sm" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></a>
+                        <button class="btn btn-danger btn-sm" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></button>
                     </form>
 
                 </td>
