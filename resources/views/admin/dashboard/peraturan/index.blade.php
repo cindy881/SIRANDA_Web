@@ -7,21 +7,21 @@
 </div>
 
 @if(session()->has('successCreate'))
-<div class="alert alert-success alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-success alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successCreate') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successEdit'))
-<div class="alert alert-info alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-info alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successEdit') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successDelete'))
-<div class="alert alert-danger alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-danger alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successDelete') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -48,10 +48,10 @@
                 <td>{{ $peraturan->nama_uu }}</td>
                 <td>{{ $peraturan->file_uu }}</td>
                 <td>
-                    <form action="" method="POST">
+                    <form action="{{ url('/admin/dashboard/peraturan/'.$peraturan->id) }}" method="POST">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        <a class="btn btn-danger btn-sm d-inline" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></a>
+                        <button class="btn btn-danger btn-sm d-inline" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></button>
                     </form>
                 </td>
             </tr>

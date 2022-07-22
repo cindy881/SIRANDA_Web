@@ -5,7 +5,7 @@
         Back to home
       </a>
     </div> --}}
-    <div class="position-sticky pt-4 ms-2">
+    <div class="position-sticky pt-4 ms-1">
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link text-light {{ Request::is('dashboard') ? 'active' : '' }}" style="font-size: 1rem;" aria-current="page" href="{{ url('/dashboard') }}">
@@ -21,7 +21,7 @@
         </li>
         <li><hr style="background-color: aliceblue;"></li>
         <li class="nav-item">
-          <a class="nav-link text-light {{ Request::is('dashboard/profile*') ? 'active' : '' }}" style="font-size: 1rem;" href="{{ url('/dashboard/profile') }}">
+          <a class="nav-link text-light {{ Request::is('dashboard/profile*') ? 'active' : '' }}" style="font-size: 1rem;" href="{{ route('profile') }}">
             <span data-feather="user"></span>
             Profile 
           </a>

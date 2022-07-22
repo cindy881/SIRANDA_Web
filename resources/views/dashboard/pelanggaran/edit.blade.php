@@ -8,7 +8,8 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ url('dashboard/pelanggaran') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('dashboard/pelanggaran/'.$pelanggaran->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PATCH')
             @csrf
 
             {{-- TANGGAL --}}
@@ -35,7 +36,7 @@
             <div class="mx-4 mb-2">
                 <label for="lokasi" class="form-label">Lokasi Pelanggaran</label>
                 <select class="form-select" name="fk_desakel" id="fk_desakel" value="">
-                    <option selected>{{ $pelanggaran->desakel->nama_desakel }}</option>
+                    <option value="{{ $pelanggaran->desakel->id }}" selected>{{ $pelanggaran->desakel->nama_desakel }}</option>
                     @foreach($desakels as $desakel)
                     <option value="{{ $desakel->id }}">{{ $desakel->nama_desakel }}</option>
                     @endforeach

@@ -28,7 +28,7 @@
 @endif
 
 <div class="table-responsive">
-    <a href="{{ url('/dashboard/tindaklanjut/create') }}" class="btn btn-primary text-light mb-3 mx-2"><i class="bi bi-plus-lg"></i> Input Tindak Lanjut</a>
+    <a href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut/create') }}" class="btn btn-primary text-light mb-3 mx-2"><i class="bi bi-plus-lg"></i> Input Tindak Lanjut</a>
     <table id="example" class="table table-sm v-middle">
         <thead>
             <tr class="bg-light">
@@ -44,16 +44,18 @@
             <tr class="text-center">
                 <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td>
                 <td>{{ $tindaklanjut->uraian_tindaklanjut }}</td>
-                <td>{{ $tindaklanjut->filefoto_tindaklanjut }}</td>
+                <td>
+                    <img src="{{ asset('storage/'.$tindaklanjut->filefoto_tindaklanjut) }}" alt="" style="heigth: 4rem; width: 4rem;">
+                </td>
                 <td>
                     {{-- <button class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}">Show</button> --}}
                     <a class="btn btn-success btn-sm" href=""><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
                 </td>
                 <td>
-                    <form action="" method="POST">
+                    <form action="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut'.$tindaklanjut->id) }}" method="POST">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        <a class="btn btn-danger btn-sm d-inline" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></a>
+                        <button class="btn btn-danger btn-sm d-inline" type="submit"><i class="bi bi-trash-fill" style="font-size: .75rem;"></i></button>
                     </form>
 
                 </td>

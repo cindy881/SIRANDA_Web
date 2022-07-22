@@ -47,6 +47,7 @@ class PeraturanController extends Controller
         $validatedData['fk_user_uu'] = auth()->user()->id;
 
         Peraturan::create($validatedData);
+
         return redirect('/admin/dashboard/peraturan')->with('successCreate', 'Data baru berhasil disimpan!');
     }
 

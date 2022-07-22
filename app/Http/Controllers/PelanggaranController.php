@@ -105,6 +105,7 @@ class PelanggaranController extends Controller
     public function update(Request $request, Pelanggaran $pelanggaran)
     {
         $rules = [
+            'id_pelanggaran' => 'required',
             'tgl_pelanggaran' => 'required|date_format:Y-m-d',
             'uraian_pelanggaran' => 'required',
             'filefoto_pelanggaran' => 'required|image|max:2048',
@@ -116,16 +117,18 @@ class PelanggaranController extends Controller
         ];
 
         $validatedData = $request->validate($rules);
-        $validatedData['id_pelanggaran'] = IdGenerator::generate([
-            'table' => 'pelanggarans',
-            'field' => 'id_pelanggaran',
-            'length' => 10,
-            'prefix' => 'PLGRN-',
-        ]);
+        // $validatedData['id_pelanggaran'] = IdGenerator::generate([
+        //     'table' => 'pelanggarans',
+        //     'field' => 'id_pelanggaran',
+        //     'length' => 10,
+        //     'prefix' => 'PLGRN-',
+        // ]);
         $validatedData['filefoto_pelanggaran'] = $request->file('filefoto_pelanggaran')->store('filefoto_pelanggaran');
         $validatedData['fk_user_pelanggaran'] = Auth::user()->id;
 
         Pelanggaran::where('id', $pelanggaran->id)->update($validatedData);
+
+        return redirect('/dashboard/pelanggaran')->with('successEdit', 'Perubahan berhasil disimpan!');
     }
 
     /**

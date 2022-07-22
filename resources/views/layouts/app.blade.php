@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: blueviolet">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: rgb(138, 44, 226)">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -59,7 +59,7 @@
 
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                     <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('dashboard/profile') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"

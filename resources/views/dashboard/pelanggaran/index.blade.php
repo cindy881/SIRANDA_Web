@@ -51,7 +51,7 @@
                 <td>{{ $pelanggaran->tgl_pelanggaran }}</td>
                 <td>{{ $pelanggaran->uraian_pelanggaran }}</td>
                 <td>
-                    <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="" style="heigth: 4rem;">
+                    <img src="{{ asset('storage/'.$pelanggaran->filefoto_pelanggaran) }}" alt="" style="heigth: 4rem; width: 4rem;">
                     {{-- {{ $pelanggaran->filefoto_pelanggaran }} --}}
                 </td>
                 <td>{{ $pelanggaran->desakel->nama_desakel }}</td>
