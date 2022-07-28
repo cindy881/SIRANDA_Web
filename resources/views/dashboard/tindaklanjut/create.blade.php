@@ -7,7 +7,7 @@
         <h3>Tambah Data</h3>
     </div>
     <div class="card-body">
-        <form action="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}" method="POST">
+        <form action="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             {{-- ID PELANGGARAN --}}

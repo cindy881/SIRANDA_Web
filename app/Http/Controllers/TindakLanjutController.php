@@ -20,7 +20,7 @@ class TindakLanjutController extends Controller
         return view('dashboard.tindaklanjut.index')->with([
             'tindaklanjuts' => $tindaklanjut->sortBy('fk_pelanggaran'),
             'pelanggaran' => $pelanggaran,
-            'tindaklanjut' => $tindaklanjut,
+            // 'tindaklanjut' => $tindaklanjut,
         ]);
     }
 

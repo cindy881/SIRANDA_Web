@@ -7,21 +7,21 @@
 </div>
 
 @if(session()->has('successCreate'))
-<div class="alert alert-success alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-success alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successCreate') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successEdit'))
-<div class="alert alert-info alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-info alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successEdit') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session()->has('successDelete'))
-<div class="alert alert-danger alert-dismissible fade show col-lg-10" role="alert">
+<div class="alert alert-danger alert-dismissible fade show col-lg-12" role="alert">
     {{ session('successDelete') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -42,14 +42,10 @@
             @foreach($tindaklanjuts as $tindaklanjut)
 
             <tr class="text-center">
-                <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td>
+                {{-- <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td> --}}
                 <td>{{ $tindaklanjut->uraian_tindaklanjut }}</td>
                 <td>
                     <img src="{{ asset('storage/'.$tindaklanjut->filefoto_tindaklanjut) }}" alt="" style="heigth: 4rem; width: 4rem;">
-                </td>
-                <td>
-                    {{-- <button class="btn btn-success btn-sm" href="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut') }}">Show</button> --}}
-                    <a class="btn btn-success btn-sm" href=""><i class="bi bi-eye" style="font-size: .75rem;"></i></a>
                 </td>
                 <td>
                     <form action="{{ url('/dashboard/pelanggaran/'.$pelanggaran->id.'/tindaklanjut'.$tindaklanjut->id) }}" method="POST">

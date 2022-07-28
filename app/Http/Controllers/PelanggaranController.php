@@ -105,7 +105,7 @@ class PelanggaranController extends Controller
     public function update(Request $request, Pelanggaran $pelanggaran)
     {
         $rules = [
-            'id_pelanggaran' => 'required',
+            // 'id_pelanggaran' => 'required',
             'tgl_pelanggaran' => 'required|date_format:Y-m-d',
             'uraian_pelanggaran' => 'required',
             'filefoto_pelanggaran' => 'required|image|max:2048',

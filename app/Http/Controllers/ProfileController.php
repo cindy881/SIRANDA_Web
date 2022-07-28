@@ -63,6 +63,13 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function editAdmin(Request $request)
+    {
+        return view('admin.dashboard.profile.index', [
+            'user' => $request->user()
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -85,6 +92,14 @@ class ProfileController extends Controller
             $request->all()
         );
         return redirect('/dashboard/profile')->with('successEdit', 'Perubahan berhasil disimpan!');
+    }
+
+    public function updateAdmin(UpdateProfileRequest $request)
+    {
+        $request->user()->update(
+            $request->all()
+        );
+        return redirect('/admin/dashboard/profile')->with('successEdit', 'Perubahan berhasil disimpan!');
     }
 
     /**

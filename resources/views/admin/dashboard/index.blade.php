@@ -52,11 +52,10 @@
     </div>
 </div>
 
-<!-- ============================================================== -->
-<!-- Table -->
-<!-- ============================================================== -->
 <div class="row">
-    <!-- column -->
+    <!-- ============================================================== -->
+    <!-- Table -->
+    <!-- ============================================================== -->
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -118,10 +117,66 @@
             </div>
         </div>
     </div>
+
+    <!-- ============================================================== -->
+    <!-- Map -->
+    <!-- ============================================================== -->
+    <div class="col-12">
+        <div class="card mb-5">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Peta Sebaran Pelanggaran</h4>
+                        {{-- <h5 class="card-subtitle">Overview of Top Selling Items</h5> --}}
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div id="map" style="height: 300px;"></div>
+
+            <script>
+                var map = L.map('map').setView([-6.89550, 112.04149], 13);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+                }).addTo(map);
+
+                var pelanggarans=[
+                    @foreach($pelanggarans as $key => $data)
+                        [ "{{$data->lat_pelanggaran}}", "{{$data->lng_pelanggaran}}", "{{$data->id_pelanggaran}}", "{{$data->bentuk_pelanggaran}}", "{{$data->pelaku_pelanggaran}}"],
+                    @endforeach
+                ];
+
+                 //add markers
+                    if (pelanggarans.length) {
+                        pelanggarans.forEach(function(data, i) {
+                        let [lat, lng] = [data[0], data[1]];
+                        let label1 = data[2];
+                        let label2 = data[3];
+                        let label3 = data[4];
+                        if (lat && lng) {
+                            marker = new L.marker([lat, lng])
+                            .bindPopup(label1 + '<br>' + label2 + '<br>' + label3 + '<br><a href="{{ url('admin/dashboard') }}">view detail</a>')
+                            .addTo(map);
+
+                        } else {
+                            console.log('no geo data available for: ' + label)
+                        }
+                        })
+                    }
+
+                // marker.bindPopup(popupContent).openPopup();
+
+                // var popup = L.popup()
+                //     .setLatLng(latlng)
+                //     .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+                //     .openOn(map);
+            </script>
+        </div>
+    </div>
 </div>
-<!-- ============================================================== -->
-<!-- Table -->
-<!-- ============================================================== -->
 
 
 @endsection
