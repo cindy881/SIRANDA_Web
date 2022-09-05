@@ -20,6 +20,13 @@ class PeraturanController extends Controller
         ]);
     }
 
+    public function pdf()
+    {
+        return view('admin.dashboard.peraturan.pdf')->with([
+            'file' => Peraturan::all(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

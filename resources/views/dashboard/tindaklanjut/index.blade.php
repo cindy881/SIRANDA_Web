@@ -42,7 +42,7 @@
             @foreach($tindaklanjuts as $tindaklanjut)
 
             <tr class="text-center">
-                {{-- <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td> --}}
+                <td>{{ $tindaklanjut->pelanggaran->id_pelanggaran }}</td>
                 <td>{{ $tindaklanjut->uraian_tindaklanjut }}</td>
                 <td>
                     <img src="{{ asset('storage/'.$tindaklanjut->filefoto_tindaklanjut) }}" alt="" style="heigth: 4rem; width: 4rem;">

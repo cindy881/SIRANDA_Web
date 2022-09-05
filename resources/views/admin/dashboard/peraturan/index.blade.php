@@ -46,7 +46,9 @@
             <tr class="text-center">
                 <td>{{ $no }}</td>
                 <td>{{ $peraturan->nama_uu }}</td>
-                <td>{{ $peraturan->file_uu }}</td>
+                <td>
+                <a href="{{ url('/admin/dashboard/peraturan/'.$peraturan->file_uu) }}" class="btn btn-success">view</a>
+                </td>
                 <td>
                     <form action="{{ url('/admin/dashboard/peraturan/'.$peraturan->id) }}" method="POST">
                         @csrf

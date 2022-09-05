@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Desakel;
 use App\Models\Pelanggaran;
 use App\Models\Peraturan;
 use App\Models\TindakLanjut;
@@ -15,9 +16,11 @@ class DashboardController extends Controller
     {
         $pelanggaran = Pelanggaran::all();
         $jumlah_pelanggaran = Pelanggaran::where('fk_user_pelanggaran', auth()->user()->id)->count();
+        $desakel = Desakel::all();
         return view('dashboard.index')->with([
             'pelanggarans' => $pelanggaran,
             'jumlah_pelanggaran' => $jumlah_pelanggaran,
+            'desakel' => $desakel,
         ]);
     }
 
@@ -53,5 +56,12 @@ class DashboardController extends Controller
             'pelanggaran' => $pelanggaran,
             'tindaklanjut' => $tindaklanjut,
         ]);
+    }
+
+    public function show(Desakel $desakel)
+    {
+        $pelanggarans = Desakel::findOrFail($desakel)->pelanggarans()->get();
+        return view('dashboard.desakel', compact('desakel'))
+            ->with('pelanggarans', $pelanggarans);
     }
 }

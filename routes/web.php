@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
     // DASHBOARD
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/desakel/{desakel}', [App\Http\Controllers\DashboardController::class, 'show']);
     Route::prefix('/dashboard')->group(function () {
         Route::get('/tindaklanjut', [App\Http\Controllers\DashboardController::class, 'tindaklanjut'])->name('dashboard.tindaklanjut');
         Route::resource('/pelanggaran', PelanggaranController::class);
@@ -52,6 +53,7 @@ Route::prefix('/admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::prefix('/dashboard')->group(function () {
         Route::get('/tindaklanjut', [App\Http\Controllers\DashboardController::class, 'tindaklanjutAdmin'])->name('admin.dashboard.tindaklanjut');
         Route::resource('/peraturan', App\Http\Controllers\PeraturanController::class);
+        Route::get('/peraturan/{peraturan:file_uu} ', [App\Http\Controllers\PeraturanController::class, 'pdf']);
 
         // PROFILE
         Route::controller(ProfileController::class)->group(function () {
